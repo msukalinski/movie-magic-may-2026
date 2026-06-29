@@ -65,6 +65,26 @@
       "year": "2021",
       "rating": 6.6,
       "category": "movie"
+    },
+    {
+      "title": "test",
+      "category": "short-film",
+      "genre": "test",
+      "director": "testov",
+      "year": "1900",
+      "imageUrl": "testov",
+      "rating": "5",
+      "description": "test testov"
+    },
+    {
+      "title": "asd",
+      "category": "tv-show",
+      "genre": "asd",
+      "director": "asd",
+      "year": "1234",
+      "imageUrl": "asd",
+      "rating": "5",
+      "description": "asdasd"
     }
   ]
 }
