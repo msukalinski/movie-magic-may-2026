@@ -12,7 +12,7 @@ SoftUni JS Back-End Course Workshop
  - [x] Setup static files
  - [x] Render Home Page
  - [x] Render About Page
- - [] Add Layout
+ - [x] Add Layout
 ### Architecture and dynamic rendering
  - [] Add home controller
  - [] Add movie data layer
