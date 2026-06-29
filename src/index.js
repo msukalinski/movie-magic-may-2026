@@ -1,8 +1,8 @@
 
 import express from 'express';
 import { engine } from 'express-handlebars';
-import routes from './routes.js';
 
+import routes from './routes.js';
 
 const app = express();
 
