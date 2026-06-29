@@ -11,7 +11,7 @@ SoftUni JS Back-End Course Workshop
  - [x] Setup Handlebars `npm i express-handlebars`
  - [x] Setup static files
  - [x] Render Home Page
- - [] Render About Page
+ - [x] Render About Page
  - [] Add Layout
 ### Architecture and dynamic rendering
  - [] Add home controller
