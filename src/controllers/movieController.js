@@ -16,4 +16,11 @@ movieController.post('/create', async(req, res) => {
     console.log(req.body);
 });
 
+//Details page
+movieController.get('/:movieId', async (req, res) => {
+    const movieId = req.params.id;
+
+    res.render('movies/details')
+});
+
 export default movieController;
