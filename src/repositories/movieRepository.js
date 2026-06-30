@@ -14,12 +14,24 @@ async function readDb(collection) {
 async function writeDb(db) {
     const content = JSON.stringify(db, null, 2)
     await fs.writeFile('./src/db.json', content, { encoding: 'utf-8' });
-}
+};
 
 async function getAll() {
     const movies = await readDb('movies');
 
     return movies;
+};
+
+async function getById(movieId) {
+    const movies = await readDb('movies');
+
+    const movie = movies.find(m => m.id === movieId);
+
+    if(!movie) {
+        throw new Error('No movie found!');
+    };
+
+    return movie;
 };
 
 async function create(movieData) {
@@ -29,10 +41,11 @@ async function create(movieData) {
     db.movies.push(movieData);
 
     await writeDb(db);
-}
+};
 
 const movieRepository = {
     getAll,
+    getById,
     create
 };
 
