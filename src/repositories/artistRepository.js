@@ -1,12 +1,10 @@
 import {prisma} from '../lib/prisma.js';
 
-// export async function getAll() {
-//     const artists = await prisma.artist.findMany({
-//         where: {
-//             id: true
-//         }
-//     });
-// };
+export async function getAll() {
+    const artists = await prisma.artist.findMany();
+
+    return artists
+};
 
 export async function create(artistData) {
     const artist = await prisma.artist.create({
@@ -17,7 +15,7 @@ export async function create(artistData) {
 };
 
 const artistRepository = {
-    // getAll,
+    getAll,
     create
 };
 
