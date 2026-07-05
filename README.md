@@ -84,7 +84,7 @@ SoftUni JS Back-End Course Workshop
  - [x] Add artist view
  - [x] Add artist controller
  - [x] Add to routes
- - [] Add header link
+ - [x] Add header link
  - [] Modify create form
  - [] Add artist post action
  - [] Add artist service
