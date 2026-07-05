@@ -8,19 +8,29 @@ function getById(movieId) {
     const id = Number(movieId);
     
     return movieRepository.getById(id);
-}
+};
 
 function create(movieData) {
     movieData.rating = Number(movieData.rating);
     movieData.year = Number(movieData.year);
     
     return movieRepository.create(movieData);
+};
+
+async function attachArtist(movieId, artistId) {
+    const movieIdNumber = Number(movieId);
+    const artistIdNumber = Number(artistId);
+
+    const result = await movieRepository.attachArtist(movieIdNumber, artistIdNumber);
+
+    return result;
 }
 
 const movieService = {
     getAll,
     getById,
-    create
+    create,
+    attachArtist
 };
 
 export default movieService;
