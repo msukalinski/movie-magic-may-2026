@@ -123,8 +123,8 @@ SoftUni JS Back-End Course Workshop
  -[x] Hash password `npm i bcrypt`
 
 ### Login
- -[ ] Add login page
- -[ ] Add login post action
+ -[x] Add login page
+ -[x] Add login post action
  -[ ] Add login service method
  -[ ] Add findByEmail repository method
  -[ ] Validate password
