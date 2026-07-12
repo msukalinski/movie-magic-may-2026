@@ -13,7 +13,7 @@ datasource db {
 }
 
 model Movie {
-  id          Int      @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   category    String
   genre       String
@@ -22,21 +22,23 @@ model Movie {
   imageUrl    String
   rating      Float
   description String?
+  userId      Int?
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   artists Artist[]
+  owner   User?    @relation(fields: [userId], references: [id])
 
   @@map("movies")
 }
 
 model Artist {
-  id        Int      @id @default(autoincrement())
-  name      String
-  age       Int
-  born      String
-  imageUrl  String
+  id       Int    @id @default(autoincrement())
+  name     String
+  age      Int
+  born     String
+  imageUrl String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -47,12 +49,14 @@ model Artist {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
+  id       Int    @id @default(autoincrement())
+  email    String @unique
   password String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  movies Movie[]
 
   @@map("users")
 }

@@ -41,7 +41,8 @@ async function create(movieData) {
     const movie = await prisma.movie.create({
         data: movieData
     });
-    return movie
+
+    return movie;
 };
 
 async function attachArtist(movieId, artistId) {
