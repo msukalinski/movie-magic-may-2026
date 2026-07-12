@@ -10,6 +10,11 @@ const app = express();
 //Setup handlebars
 app.engine('hbs', engine({
     extname: 'hbs',
+    helpers: {
+        isSelected() {
+            return this.selected ?'selected' : '';
+        }
+    }
 }));
 app.set('view engine', 'hbs');
 app.set('views', './src/views');
