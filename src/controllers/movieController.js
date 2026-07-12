@@ -30,14 +30,17 @@ movieController.post('/create', isAuth, async (req, res) => {
 //Details page
 movieController.get('/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
+    const userId = req?.user.id
 
     const movie = await movieService.getById(movieId);
+
+    const isOwner = movie.userId && movie.userId === userId;
 
     //Prepare view data | Quick and Dirty TODO: Fix it
     // const rating = ;
     const ratingStars = '&#x2605;'.repeat(Math.floor(movie.rating));
 
-    res.render('movies/details', { movie, pageTitle: 'Movie Details', ratingStars });
+    res.render('movies/details', { movie, pageTitle: 'Movie Details', ratingStars, isOwner });
 });
 
 movieController.get('/:movieId/attach', isAuth, async (req, res) => {
