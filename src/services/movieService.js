@@ -25,13 +25,24 @@ async function attachArtist(movieId, artistId) {
     const result = await movieRepository.attachArtist(movieIdNumber, artistIdNumber);
 
     return result;
+};
+
+export async function remove(movieId, userId) {
+    const movie = await movieRepository.getById(movieId);
+
+    if(!movie) {
+        throw new Error('Not such movie.');
+    };
+
+    await movieRepository.remove(movieId, userId);
 }
 
 const movieService = {
     getAll,
     getById,
     create,
-    attachArtist
+    attachArtist,
+    remove
 };
 
 export default movieService;
