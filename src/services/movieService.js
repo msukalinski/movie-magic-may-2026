@@ -35,6 +35,14 @@ export async function remove(movieId, userId) {
     };
 
     await movieRepository.remove(movieId, userId);
+};
+
+export async function edit(movieId, movieData, userId) {
+    movieData.rating = Number(movieData.rating);
+    movieData.year = Number(movieData.year);
+    movieData.userId = userId;
+
+    await movieRepository.edit(movieId, movieData, userId);
 }
 
 const movieService = {
@@ -42,7 +50,8 @@ const movieService = {
     getById,
     create,
     attachArtist,
-    remove
+    remove,
+    edit
 };
 
 export default movieService;
