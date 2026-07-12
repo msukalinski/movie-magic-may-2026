@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 
 import userRepository from "../repositories/userRepository.js";
 
-export async function create(userData) {
+export async function register(userData) {
     const hashPassword = await bcrypt.hash(userData.password, 10);
     const result = await userRepository.create({
         ...userData,
@@ -12,8 +12,15 @@ export async function create(userData) {
     return result;
 };
 
+export async function login(userData) {
+    const user = await userRepository.findByEmail(userData.email);
+
+    console.log(user);
+}
+
 const authService = {
-    create
+    register,
+    login
 };
 
 export default authService;
