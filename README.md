@@ -164,7 +164,7 @@ SoftUni JS Back-End Course Workshop
 
 ## Workshop 4 - Validation and Error Handling
 
- -[ ] Add resources
+ -[x] Add resources
 
 ### Movie Validation and Error Handling
  -[ ] Create Movie Schema with Zod
