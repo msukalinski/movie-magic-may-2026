@@ -52,7 +52,7 @@ SoftUni JS Back-End Course Workshop
  - [x] Rating (temp solution)
  - [x] File Persistance
 
- ## Workshop 2 - PostgreSQL and Prisma
+## Workshop 2 - PostgreSQL and Prisma
 
 ### Prerequisites
  - [x] PostgreSQL Installed `psql --version`
@@ -108,7 +108,7 @@ SoftUni JS Back-End Course Workshop
  - [] Name in movie (Explicit Many-to-Many)
  - [] Modify service export
 
- ## Workshop 3 - Session and Authentication
+## Workshop 3 - Session and Authentication
 
 ### Intro
  - [x] Add resources
@@ -132,8 +132,8 @@ SoftUni JS Back-End Course Workshop
  -[x] Return token in cookie
 
 ### Logout
- -[ ] Add logout action
- -[ ] Use logout on invalid token
+ -[x] Add logout action
+ -[x] Use logout on invalid token
 
 ### Authentication & Authorization
  -[x] Create auth middleware
@@ -161,3 +161,30 @@ SoftUni JS Back-End Course Workshop
  -[x] Fix select on edit
  -[ ] Make token generation async
  -[ ] Fix rating
+
+## Workshop 4 - Validation and Error Handling
+
+ -[ ] Add resources
+
+### Movie Validation and Error Handling
+ -[ ] Create Movie Schema with Zod
+ -[ ] Catch, extract and return errors
+ -[ ] Populate already filled data
+ -[ ] Populate select category
+ -[ ] Show single error
+ -[ ] Validate enum (movie category)
+ -[ ] Show multiple errors
+ -[ ] Get Prisma errors
+
+### Artist Validation and Error Handling
+ -[ ] Create Artist schema
+ -[ ] Validate on create
+ -[ ] Get error message
+
+### User Validation and Error Handling
+ -[ ] Validate User
+ -[ ] Validate repeat password
+ -[ ] Validate unique email (async validation)
+
+### Bonus
+ -[ ] Fix dynamic page titles
