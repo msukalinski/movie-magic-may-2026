@@ -1,7 +1,10 @@
 import { Router } from "express";
+import * as z from 'zod';
+
 import movieService from "../services/movieService.js";
 import artistService from "../services/artistService.js";
 import { isAuth } from "../middlewares/authMiddleware.js";
+import { createMovieSchema } from "../schemas/movieSchema.js";
 
 const movieController = Router();
 
@@ -21,10 +24,21 @@ movieController.post('/create', isAuth, async (req, res) => {
     const newMovie = req.body;
     const userId = req.user.id;
 
-    await movieService.create(newMovie, userId);
+    try {
+        const movieData = createMovieSchema.parse(newMovie);
 
-    res.redirect('/');
-    console.log(req.body);
+        await movieService.create(movieData, userId);
+
+        res.redirect('/');
+    } catch (err) {
+        if (err instanceof z.ZodError) {
+            const errors = z.flattenError(err).fieldErrors;
+
+            const categoryOptions = prepareCategoryViewData(newMovie);
+
+            res.status(400).render('movies/create', { movie: req.body, errors, categoryOptions, pageTitle: 'Crate Movie' });
+        };
+    };
 });
 
 //Details page
@@ -75,7 +89,7 @@ function prepareCategoryViewData(movie) {
 
     const categoryOptions = categories.map(category => {
         const value = category.toLowerCase().replaceAll(' ', '-');
-        
+
         const option = {
             value,
             label: category,

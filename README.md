@@ -167,9 +167,9 @@ SoftUni JS Back-End Course Workshop
  -[x] Add resources
 
 ### Movie Validation and Error Handling
- -[ ] Create Movie Schema with Zod
- -[ ] Catch, extract and return errors
- -[ ] Populate already filled data
+ -[x] Create Movie Schema with Zod
+ -[x] Catch, extract and return errors
+ -[x] Populate already filled data
  -[ ] Populate select category
  -[ ] Show single error
  -[ ] Validate enum (movie category)
