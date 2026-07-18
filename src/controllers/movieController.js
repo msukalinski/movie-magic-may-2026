@@ -44,13 +44,11 @@ movieController.post('/create', isAuth, async (req, res) => {
         let errors = {};
         let errorMessage = null;
         const categoryOptions = prepareCategoryViewData(newMovie);
-        console.log(err.name)
 
         if (err.name === 'ZodError') {
             errors = z.flattenError(err).fieldErrors;
-            const categoryOptions = prepareCategoryViewData(newMovie);
 
-        } else if (err.name === 'PrismaClientUnknownRequestError') {
+        } else if (err.name === 'PrismaClientKnownRequestError') {
             switch (err.code) {
                 case 'P2002':
                     errors = { title: ['Title must be unique'] };
