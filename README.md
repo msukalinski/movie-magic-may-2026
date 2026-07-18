@@ -170,8 +170,8 @@ SoftUni JS Back-End Course Workshop
  -[x] Create Movie Schema with Zod
  -[x] Catch, extract and return errors
  -[x] Populate already filled data
- -[ ] Populate select category
- -[ ] Show single error
+ -[x] Populate select category
+ -[x] Show single error
  -[ ] Validate enum (movie category)
  -[ ] Show multiple errors
  -[ ] Get Prisma errors
