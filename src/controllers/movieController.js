@@ -17,7 +17,9 @@ movieController.get('/search', async (req, res) => {
 });
 
 movieController.get('/create', isAuth, (req, res) => {
-    res.render('movies/create', { pageTitle: 'Create Movie' });
+    const categoryOptions = prepareCategoryViewData();
+
+    res.render('movies/create', { categoryOptions, pageTitle: 'Create Movie' });
 });
 
 movieController.post('/create', isAuth, async (req, res) => {
@@ -31,14 +33,34 @@ movieController.post('/create', isAuth, async (req, res) => {
 
         res.redirect('/');
     } catch (err) {
-        if (err instanceof z.ZodError) {
-            const errors = z.flattenError(err).fieldErrors;
+        // if (err instanceof z.ZodError) {
+        //     const errors = z.flattenError(err).fieldErrors;
 
+        //     const categoryOptions = prepareCategoryViewData(newMovie);
+        //     const firstError = Object.values(errors).flat().at(0)
+        //     res.status(400).render('movies/create', { movie: req.body, errors, error: firstError, categoryOptions, pageTitle: 'Crate Movie' });
+        // };
+
+        let errors = {};
+        let errorMessage = null;
+        const categoryOptions = prepareCategoryViewData(newMovie);
+        console.log(err.name)
+
+        if (err.name === 'ZodError') {
+            errors = z.flattenError(err).fieldErrors;
             const categoryOptions = prepareCategoryViewData(newMovie);
-            const firstError = Object.values(errors).flat().at(0)
-            res.status(400).render('movies/create', { movie: req.body, errors, error: firstError, categoryOptions, pageTitle: 'Crate Movie' });
-        };
-    };
+
+        } else if (err.name === 'PrismaClientUnknownRequestError') {
+            switch (err.code) {
+                case 'P2002':
+                    errors = { title: ['Title must be unique'] };
+                    break;
+            }
+        } else {
+            errorMessage = err.message || 'An unexpected error occurred';
+        }
+        res.status(400).render('movies/create', { movie: req.body, error: errorMessage, errors, categoryOptions, pageTitle: 'Crate Movie' });
+    }
 });
 
 //Details page
@@ -84,7 +106,7 @@ movieController.get('/:movieId/delete', isAuth, async (req, res) => {
     res.redirect('/');
 });
 
-function prepareCategoryViewData(movie) {
+function prepareCategoryViewData(movie = {}) {
     const categories = ['TV show', 'Animation', 'Movie', 'Documentary', 'Short Film'];
 
     const categoryOptions = categories.map(category => {

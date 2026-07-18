@@ -174,7 +174,7 @@ SoftUni JS Back-End Course Workshop
  -[x] Show single error
  -[x] Validate enum (movie category)
  -[x] Show multiple errors
- -[ ] Get Prisma errors
+ -[x] Get Prisma errors
 
 ### Artist Validation and Error Handling
  -[ ] Create Artist schema
