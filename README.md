@@ -172,8 +172,8 @@ SoftUni JS Back-End Course Workshop
  -[x] Populate already filled data
  -[x] Populate select category
  -[x] Show single error
- -[ ] Validate enum (movie category)
- -[ ] Show multiple errors
+ -[x] Validate enum (movie category)
+ -[x] Show multiple errors
  -[ ] Get Prisma errors
 
 ### Artist Validation and Error Handling
