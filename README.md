@@ -184,7 +184,7 @@ SoftUni JS Back-End Course Workshop
 ### User Validation and Error Handling
  -[x] Validate User
  -[x] Validate repeat password
- -[ ] Validate unique email (async validation)
+ -[x] Validate unique email (async validation)
 
 ### Bonus
  -[ ] Fix dynamic page titles
