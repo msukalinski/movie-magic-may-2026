@@ -182,8 +182,8 @@ SoftUni JS Back-End Course Workshop
  -[x] Get error message
 
 ### User Validation and Error Handling
- -[ ] Validate User
- -[ ] Validate repeat password
+ -[x] Validate User
+ -[x] Validate repeat password
  -[ ] Validate unique email (async validation)
 
 ### Bonus
