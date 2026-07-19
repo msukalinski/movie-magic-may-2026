@@ -1,4 +1,4 @@
-{{setTitle 'Attach Cast'}}    
+{{setTitle 'Attach Cast'}}
 
 <section id="attachCast">
     <div class="attachCastSection">
@@ -14,6 +14,10 @@
                     <option value="{{id}}">{{name}}</option>
                     {{/each}}
                 </select>
+                <div style="width: 50%; margin: 0 auto">
+                    <label for="name-in-movie">Name in Movie:</label>
+                    <input type="text" class="inputFields" id="name-in-movie" name="character" />
+                </div>
                 <div id="center-btn">
                     <button id="create-btn">Add Cast</button>
                 </div>
