@@ -13,13 +13,13 @@ movieController.get('/search', async (req, res) => {
 
     const movies = await movieService.getAll(filter);
 
-    res.render('movies/search', { movies, filter, pageTitle: 'Search Movies' });
+    res.render('movies/search', { movies, filter });
 });
 
 movieController.get('/create', isAuth, (req, res) => {
     const categoryOptions = prepareCategoryViewData();
 
-    res.render('movies/create', { categoryOptions, pageTitle: 'Create Movie' });
+    res.render('movies/create', { categoryOptions });
 });
 
 movieController.post('/create', isAuth, async (req, res) => {
@@ -57,7 +57,7 @@ movieController.post('/create', isAuth, async (req, res) => {
         } else {
             errorMessage = err.message || 'An unexpected error occurred';
         }
-        res.status(400).render('movies/create', { movie: req.body, error: errorMessage, errors, categoryOptions, pageTitle: 'Crate Movie' });
+        res.status(400).render('movies/create', { movie: req.body, error: errorMessage, errors, categoryOptions });
     }
 });
 
@@ -74,7 +74,7 @@ movieController.get('/:movieId', async (req, res) => {
     // const rating = ;
     const ratingStars = '&#x2605;'.repeat(Math.floor(movie.rating));
 
-    res.render('movies/details', { movie, pageTitle: 'Movie Details', ratingStars, isOwner });
+    res.render('movies/details', { movie, ratingStars, isOwner });
 });
 
 movieController.get('/:movieId/attach', isAuth, async (req, res) => {
@@ -83,7 +83,7 @@ movieController.get('/:movieId/attach', isAuth, async (req, res) => {
     const movie = await movieService.getById(movieId);
     const artists = await artistService.getAll({ exclude: movie.artists.map(artist => artist.id) });
 
-    res.render('movies/attach', { pageTitle: 'Attach Movie', movie, artists });
+    res.render('movies/attach', { movie, artists });
 });
 
 movieController.post('/:movieId/attach', isAuth, async (req, res) => {
@@ -133,7 +133,7 @@ movieController.get('/:movieId/edit', isAuth, async (req, res) => {
 
     const categoryOptions = prepareCategoryViewData(movie);
 
-    res.render('movies/edit', { pageTitle: 'Edit Movie', movie, categoryOptions });
+    res.render('movies/edit', { movie, categoryOptions });
 });
 
 movieController.post('/:movieId/edit', isAuth, async (req, res) => {

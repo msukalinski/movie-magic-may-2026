@@ -14,12 +14,12 @@ artistController.post('/create', isAuth, async (req, res) => {
     try {
         const artistData = createArtistSchema.parse(req.body)
         await artistService.create(artistData);
-        
+
         res.redirect('/');
     } catch (err) {
         const error = getErrorMessage(err);
 
-        res.status(400).render('artists/create', {artist: req.body, error, pageTitle: 'Create Artist'});
+        res.status(400).render('artists/create', { artist: req.body, error });
     }
 });
 
